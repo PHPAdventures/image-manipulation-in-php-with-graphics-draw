@@ -1,6 +1,13 @@
 <?php
     // Send back an image if we're receiving text for the button.
     if ( isset( $_GET['text'] ) ) {
+        include
+            __DIR__ .
+            DIRECTORY_SEPARATOR .
+            'includes' .
+            DIRECTORY_SEPARATOR .
+            'image-hue.php';
+
         define('ASSET_DIR', __DIR__ . DIRECTORY_SEPARATOR . 'assets');
         
         // Let the browser know this is an image, NOT a web page!
@@ -30,6 +37,9 @@
             $fontColour // Colour of font.
         );
 
+        // Adjust hue / colouration of image.
+        imageHue($image, 200); // Image, and hue shift in degrees (0-360.)
+
         // Allow alpha channels (transparency) in image.
         imageSaveAlpha($image, TRUE);
 
@@ -53,10 +63,10 @@
     <h1>01 GD Buttons</h1>
     <p>
         <a href="https://phpadventures.com">
-            <img src="/01-gd-buttons.php?text=PHP+Adventures" alt="PHP Adventures">
+            <img src="/02-gd-buttons-with-hue.php?text=PHP+Adventures" alt="PHP Adventures">
         </a>
         <a href="https://www.bioware.com/">
-            <img src="/01-gd-buttons.php?text=BioWare" alt="BioWare">
+            <img src="/02-gd-buttons-with-hue.php?text=BioWare" alt="BioWare">
         </a>
     </p>
     
